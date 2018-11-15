@@ -1,8 +1,6 @@
-
-
 def playOn():
     # #Guessing game for numbers between 1 to 10
-    print "Welcome to the number guessing game"
+    print "Welcome to the number guessing game."
     print "I am thinking of a number between 1 and 10"
 
     import random 
@@ -25,13 +23,13 @@ def playOn():
         #User's guess is low    
         if guess < secret_number:
             print "You have %d guesses left" % number_of_guesses
-            number_of_guesses = number_of_guesses - 1
+            number_of_guesses -= 1
             print "%d is too low. Guess again." % guess
             guess = int(raw_input("What's the number? "))
         #User's guess is high    
         elif guess > secret_number:
             print "You have %d guesses left" % number_of_guesses
-            number_of_guesses = number_of_guesses - 1
+            number_of_guesses -= 1
             print "%d is too high. Guess again." % guess
             guess = int(raw_input("What's the number? "))
         #User's guess is correct!

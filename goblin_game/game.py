@@ -43,7 +43,7 @@ while game_on:
     # blit is a function and takes 2 arguments
     # 1. What do you want to draw?
     # 2. where do you want to draw it?
-    pygame_screen.blit(background_image,[0,0])
+pygame_screen.blit(background_image,[0,0])
 
     # Flip the screen and start over
-    pygame.display.flip()
+pygame.display.flip()

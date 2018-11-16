@@ -72,7 +72,7 @@ print
 for i in range(1,11):
     print i
 
-#10
+#10 How many coins do you want? 
 coin = 0
 print 'You have %i coin(s)' % coin
 answer = raw_input('Do you want a coin? [yes/no] ')
@@ -82,8 +82,6 @@ while(answer != 'no'):
     answer = raw_input('Do you want another coin? [yes/no] ')
     if(answer == 'yes'):
         continue
-    # elif(answer == 'Yes'):
-    #     coin += 1
     else:
         print 'Okay, good bye. You have %i coins' % coin
         break

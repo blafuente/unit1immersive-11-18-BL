@@ -45,3 +45,7 @@ print ramit['interests'][0]
 print ramit['friends'][0]['email']
 # Wrtie a python expression that gets the second of Jan's two interests. 
 print ramit['friends'][1]['interests'][1]
+
+#Letter Summary
+def letter_histogram():
+    word = raw_input("Enter a word: ") 

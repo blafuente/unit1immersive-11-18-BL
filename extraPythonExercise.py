@@ -75,10 +75,10 @@ for i in range(1,11):
 #10
 coin = 0
 print 'You have %i coin(s)' % coin
-answer = raw_input('Do you want a coin? ')
+answer = raw_input('Do you want a coin? [yes/no] ')
 while(answer != 'no'):
-    print 'You have %i coin(s)' % coin
     answer = raw_input('Do you want another coin? [yes/no] ')
+    print 'You have %i coin(s)' % coin
     if(answer == 'yes'):
         coin += 1
     # elif(answer == 'Yes'):

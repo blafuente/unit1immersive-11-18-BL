@@ -1,0 +1,32 @@
+Man
+- The man command - manual command - is used to show the manual of the inputted command.
+Just like a film on nature of film, the man command is the meta command of the LINUX CLI.
+Inputting the man command will show you all information about the command you are using. 
+An example:
+
+        man cd
+
+rmdir
+The rmdir - remove directory - command allows the user to remove an existing command using the Linux CLI.
+An example of the rmdir command:
+
+    rmdir testdirectory
+
+locate
+The locate - a.k.a. find - command is meant to find a file within the Linux OS.
+If you don't konw the name of a certain file or you aren't sure where the file is saved and stored, the locate
+command comes in handy. A locate command example:
+
+    locate -i *red*house*city*
+
+The stated command will locate an file with a file name comtaining "Red", "House", and "City".
+A note on the input: the use of "-i" tells the system to search for a file unspecific of captitlization 
+(Linux functions in lower case). The use of the asterik "*" signifies search for a wildcard. A wildcard tells 
+the system to pull any and all files containing the serach criteria. 
+
+grep - searches inside stuff 
+
+sed - search a string for a substring, and replace
+top - show activity monitor. CTRL + C to exit. 
+htop - similar to top
+top -o cpu -- sorts by cpu usage

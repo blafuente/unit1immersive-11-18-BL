@@ -3,6 +3,10 @@
 import pygame
 from Hero import Hero
 from BadGuy import BadGuy
+from Arrow import Arrow
+# Get group and groupcollide from the sprite module
+from pygame.sprite import Group, groupcollide
+
 # 2. Initialize Pygame.
 # Why do we need to do this? Because they told us to.
 pygame.init()
@@ -13,8 +17,15 @@ pygame_screen = pygame.display.set_mode(screen_size)
 # set the title of the window that opens...
 pygame.display.set_caption("HawkEye")
 
+# Hero Object
 theHero = Hero()
+# Bad guy object
 bad_guy = BadGuy()
+bad_guys = Group()
+bad_guys.add(bad_guy)
+# a list to hold our arrows (quiver)
+# A Group is a special pygame "list" for Sprites
+arrows = Group()
 
 # ===============VARIABLES FOR OUR GAME===========================
 background_image = pygame.image.load('background.png')
@@ -53,6 +64,11 @@ while game_on: #short hand for game_on == True
             elif event.key == 274: # Down Arrow
                 theHero.shouldMove('down')
 
+            elif event.key == 32:
+                # Space Bar ... FIRE!!
+                new_arrow = Arrow(theHero)
+                arrows.add(new_arrow)
+
         elif event.type == pygame.KEYUP: # The user RELEASED a key
             print (event.key)
             if event.key == 275: #Up Arrow
@@ -70,9 +86,20 @@ while game_on: #short hand for game_on == True
     # 2. Where to draw it
     # in the docs... SURFACE = our "pygame_screen"
     pygame_screen.blit(background_image,[0,0])
+    # Draw the hero
     theHero.draw_me()
-    bad_guy.update_me(theHero)
     pygame_screen.blit(hero_image,[theHero.x,theHero.y])
-    pygame_screen.blit(monster_image, [bad_guy.x, bad_guy.y])
+    
+    # Draw the arrow
+    for arrow in arrows:
+        arrow.update_me()
+        pygame_screen.blit(arrow_image,[arrow.x,arrow.y])
+    
+    arrow_hit = groupcollide(arrows,bad_guys,True,True)
+
+    #Draw the bad guys
+    for bad_guy in bad_guys:
+        bad_guy.update_me(theHero)
+        pygame_screen.blit(monster_image, [bad_guy.x, bad_guy.y])
    
     pygame.display.flip()

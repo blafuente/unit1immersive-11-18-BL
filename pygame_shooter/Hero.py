@@ -23,10 +23,14 @@ class Hero(object):
             self.should_move_down = start
     def draw_me(self):
         if self.should_move_right:
-            self.x += self.speed
+            if self.x < 448:
+                self.x += self.speed
         elif self.should_move_left:
-            self.x -= self.speed
+            if self.x > 32:
+                self.x -= self.speed
         if self.should_move_up:
-            self.y -= self.speed
+            if self.y > 32:
+                self.y -= self.speed
         elif self.should_move_down:
-            self.y += self.speed
+            if self.y < 416:
+                self.y += self.speed

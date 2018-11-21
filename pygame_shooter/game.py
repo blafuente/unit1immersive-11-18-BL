@@ -38,6 +38,9 @@ arrow_image = pygame.image.load('arrow.png')
 #     'y' : 0
 # }
 
+bg_music = pygame.mixer.Sound('faf.wav')
+bg_music.play()
+
 #================MAIN GAME LOOP==============================
 game_on = True
 # The loop will run as long as our bool is True

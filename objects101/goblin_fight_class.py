@@ -43,7 +43,7 @@ while(theHero.is_alive()):
             monster.take_damage(theHero.power)
             print "You have done %d damage to the %s" % (theHero.power, monster.name)
         elif userInput == "2":
-            theHero.health += randint(3,6)
+            theHero.gainHealth()
             print """
             The %s stares at you in disbelieft of your stupidity. 
             His jaw drops as your wounds heal. """ % monster.name
@@ -66,6 +66,7 @@ while(theHero.is_alive()):
             print "You have %d health." % theHero.health
             if theHero.is_alive() == 0:
                 print "Thou hast been slain."
+                break;
         else: 
             print "You have slain the %s!" % monster.name
 

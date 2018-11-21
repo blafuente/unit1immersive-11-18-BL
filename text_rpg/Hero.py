@@ -4,7 +4,5 @@ class Hero(object):
         self.health = 10
         self.power = power
 
-theHero = Hero('Link', 8)
-print theHero.power
 
 

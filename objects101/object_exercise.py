@@ -1,9 +1,9 @@
 class Person(object):
-    def __init__(self, name, email, phone):
+    def __init__(self, name, email, phone): # This is a constructor
         self.name = name
         self.email = email
         self.phone = phone
-        self.friends = list()
+        self.friends = list() #empty list of friends
         self.greet_counter = 0
 
 
@@ -14,12 +14,14 @@ class Person(object):
 
     
     def print_contact_info(self):
-        print "%s' email: %s, %s's phone number: %s" % (self.name, self.email, self.name, self.phone)
+        print "%s's email: %s, %s's phone number: %s" % (self.name, self.email, self.name, self.phone)
     
     def add_friend(self, other_person):
         self.friends.append(other_person)
         print len(self.friends)
     
+    def __repr__(self):
+        return '' % (self.name, self.email, self.phone)
     
 # Instantiate an instance object of Person with name of 
 # 'Sonny', email of 'sonny@hotmail.com', and phone of '483-485-4948', store it in the variable sonny.
@@ -43,9 +45,12 @@ class Vehicle(object):
         self.year = year
     def print_info(self):
         print self.year, self.make, self.model
-
+    def __repr__(self):
+        return '%s %s %s' % (self.make, self.model, self.year)
 car = Vehicle('Nissan', 'Leaf', 2015)
+car2 = Vehicle('Chevrolet', 'Silverado', 2018)
 car.print_info()
+car2.print_info()
 
 sonny.print_contact_info()
 
@@ -57,3 +62,4 @@ sonny.friends.append(jordan)
 jordan.add_friend(sonny)
 jordan.greet(sonny)
 print jordan.greet_counter
+

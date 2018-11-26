@@ -10,6 +10,7 @@ phonebook_dict = {
 print phonebook_dict['Elizabeth']
 # Add Kareem's number to phonebook dictionary
 phonebook_dict.update({'Kareem': '938-489-1234'})
+print phonebook_dict
 # Deleting Alice's number
 del phonebook_dict['Alice']
 # Changing Bob's number in the phonboook

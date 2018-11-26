@@ -1,10 +1,12 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Hero(object):
+class Hero(Sprite):
     # Classes always contain two parts:
     # 1. the __init__ = runs only once
     # 2. the methods = run whenever you call them
     def __init__(self):
+        super(Hero,self).__init__()
         self.x = 100
         self.y = 100
         self.speed = 10
@@ -12,6 +14,9 @@ class Hero(object):
         self.should_move_left = False
         self.should_move_up = False
         self.should_move_down = False
+        self.rect = pygame.Rect(0,0,32,32)
+        self.rect.centerx = self.x
+        self.rect.top = self.y 
     def shouldMove(self,direction,start = True):
         if direction == 'right':
             self.should_move_right = start

@@ -19,6 +19,8 @@ pygame.display.set_caption("HawkEye")
 
 # Hero Object
 theHero = Hero()
+theHeros = Group()
+theHeros.add(theHero)
 # Bad guy object
 bad_guy = BadGuy()
 bad_guys = Group()
@@ -54,7 +56,7 @@ while game_on: #short hand for game_on == True
             #These aren't the droids were lookin for. quit
             game_on = False
         elif event.type == pygame.KEYDOWN:
-            print (event.key)
+            # print (event.key)
             if event.key == 275:
                 # The user pressed the right arrow! move our dude right
                 # heroLoc['x'] += 10
@@ -73,7 +75,7 @@ while game_on: #short hand for game_on == True
                 arrows.add(new_arrow)
 
         elif event.type == pygame.KEYUP: # The user RELEASED a key
-            print (event.key)
+            # print (event.key)
             if event.key == 275: #Up Arrow
                 theHero.shouldMove('right',False)
             elif event.key == 276: #Left Arrow
@@ -99,10 +101,15 @@ while game_on: #short hand for game_on == True
         pygame_screen.blit(arrow_image,[arrow.x,arrow.y])
     
     arrow_hit = groupcollide(arrows,bad_guys,True,True)
+    if arrow_hit:
+        bad_guys.add(BadGuy())
 
     #Draw the bad guys
     for bad_guy in bad_guys:
         bad_guy.update_me(theHero)
         pygame_screen.blit(monster_image, [bad_guy.x, bad_guy.y])
-   
+
+    badguy_hit = groupcollide(theHeros, bad_guys, True, False)
+    for theHero in theHeros:
+        pygame_screen.blit(hero_image, [theHero.x, theHero.y])
     pygame.display.flip()

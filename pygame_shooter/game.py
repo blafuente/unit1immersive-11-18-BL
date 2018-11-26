@@ -84,6 +84,7 @@ while game_on: #short hand for game_on == True
                 theHero.shouldMove('up',False)
             elif event.key == 274: # Down Arrow
                 theHero.shouldMove('down',False)   
+
     #=================DRAW STUFF===============================        
     # We use blit to draw on the screen. blit = block image transfer
     # blit is a method, that takes 2 arg:
@@ -92,8 +93,9 @@ while game_on: #short hand for game_on == True
     # in the docs... SURFACE = our "pygame_screen"
     pygame_screen.blit(background_image,[0,0])
     # Draw the hero
-    theHero.draw_me()
-    pygame_screen.blit(hero_image,[theHero.x,theHero.y])
+    for theHero in theHeros:
+        theHero.draw_me()
+        pygame_screen.blit(hero_image,[theHero.x,theHero.y])
     
     # Draw the arrow
     for arrow in arrows:
@@ -109,7 +111,7 @@ while game_on: #short hand for game_on == True
         bad_guy.update_me(theHero)
         pygame_screen.blit(monster_image, [bad_guy.x, bad_guy.y])
 
-    badguy_hit = groupcollide(theHeros, bad_guys, True, False)
-    for theHero in theHeros:
-        pygame_screen.blit(hero_image, [theHero.x, theHero.y])
+    badguy_hit = groupcollide(bad_guys, theHeros, True, True)
+    if badguy_hit:
+        theHero.add(Hero())
     pygame.display.flip()

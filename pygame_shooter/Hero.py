@@ -39,3 +39,6 @@ class Hero(Sprite):
         elif self.should_move_down:
             if self.y < 416:
                 self.y += self.speed
+    def update_me(self):
+        self.rect.x = self.x
+        self.rect.y = self.y

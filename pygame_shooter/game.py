@@ -4,6 +4,7 @@ import pygame
 from Hero import Hero
 from BadGuy import BadGuy
 from Arrow import Arrow
+from Button import Start_Button
 # Get group and groupcollide from the sprite module
 from pygame.sprite import Group, groupcollide
 
@@ -28,6 +29,9 @@ bad_guys.add(bad_guy)
 # a list to hold our arrows (quiver)
 # A Group is a special pygame "list" for Sprites
 arrows = Group()
+
+# Make a start button
+start_button = Start_Button(pygame_screen)
 
 # ===============VARIABLES FOR OUR GAME===========================
 background_image = pygame.image.load('background.png')

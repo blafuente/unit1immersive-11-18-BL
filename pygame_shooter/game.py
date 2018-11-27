@@ -44,7 +44,7 @@ arrow_image = pygame.image.load('arrow.png')
 #     'y' : 0
 # }
 
-bg_music = pygame.mixer.Sound('faf.wav')
+bg_music = pygame.mixer.Sound('bg.wav')
 bg_music.play()
 
 #================MAIN GAME LOOP==============================
@@ -89,6 +89,13 @@ while game_on: #short hand for game_on == True
                 theHero.shouldMove('up',False)
             elif event.key == 274: # Down Arrow
                 theHero.shouldMove('down',False)   
+        
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos();
+            if start_button.rect.collidepoint(mouse_x, mouse_y):
+                game_start = True;
+                bg_music = pygame.mixer.Sound('faf.wav');
+                bg_music.play();
 
     #=================DRAW STUFF===============================        
     # We use blit to draw on the screen. blit = block image transfer
@@ -97,31 +104,33 @@ while game_on: #short hand for game_on == True
     # 2. Where to draw it
     # in the docs... SURFACE = our "pygame_screen"
     pygame_screen.blit(background_image,[0,0])
-    # Draw the hero
-    for theHero in theHeros:
-        theHero.draw_me()
-        pygame_screen.blit(hero_image,[theHero.x,theHero.y])
-    
-    # Draw the arrow
-    for arrow in arrows:
-        arrow.update_me()
-        pygame_screen.blit(arrow_image,[arrow.x,arrow.y])
-    
-    arrow_hit = groupcollide(arrows,bad_guys,True,True)
-    if arrow_hit:
-        bad_guys.add(BadGuy())
 
-    #Draw the bad guys
-    for bad_guy in bad_guys:
-        bad_guy.update_me(theHero)
-        pygame_screen.blit(monster_image, [bad_guy.x, bad_guy.y])
+    if game_start == True:
+        # Draw the hero
+        for theHero in theHeros:
+            theHero.draw_me()
+            pygame_screen.blit(hero_image,[theHero.x,theHero.y])
+        
+        # Draw the arrow
+        for arrow in arrows:
+            arrow.update_me()
+            pygame_screen.blit(arrow_image,[arrow.x,arrow.y])
+        
+        arrow_hit = groupcollide(arrows,bad_guys,True,True)
+        if arrow_hit:
+            bad_guys.add(BadGuy())
 
-    badguy_hit = groupcollide(bad_guys, theHeros, True, True)
-    if badguy_hit:
-        theHero.add(Hero())
+        #Draw the bad guys
+        for bad_guy in bad_guys:
+            bad_guy.update_me(theHero)
+            pygame_screen.blit(monster_image, [bad_guy.x, bad_guy.y])
+
+        badguy_hit = groupcollide(bad_guys, theHeros, True, True)
+        if badguy_hit:
+            theHero.add(Hero())
 
     if game_start == False:
         start_button.setup_message()
         start_button.draw_button()
-            
+
     pygame.display.flip()

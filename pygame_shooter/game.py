@@ -49,6 +49,7 @@ bg_music.play()
 
 #================MAIN GAME LOOP==============================
 game_on = True
+game_start = False
 # The loop will run as long as our bool is True
 while game_on: #short hand for game_on == True
     # We are in the game loop from here on out!
@@ -118,4 +119,9 @@ while game_on: #short hand for game_on == True
     badguy_hit = groupcollide(bad_guys, theHeros, True, True)
     if badguy_hit:
         theHero.add(Hero())
+
+    if game_start == False:
+        start_button.setup_message()
+        start_button.draw_button()
+            
     pygame.display.flip()

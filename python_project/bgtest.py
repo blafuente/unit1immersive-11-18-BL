@@ -7,16 +7,19 @@ import math
 pygame.init()
 
 screen_size = (960, 480)
+
 pygame_screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("Testing Background")
 
 background_image = pygame.image.load('world1_1.png')
+bgW, bgH = background_image.get_rect().size 
 bgx = 0
 bgx2 = background_image.get_width()
 clock = pygame.time.Clock()
+speed = 30
 
-speed = 30 
 game_on = True
+
 while game_on:
     #This draws the background image onto the screen
     pygame_screen.blit(background_image,[bgx, 0])
@@ -48,10 +51,10 @@ while game_on:
             game_on = False
         # elif event.type == pygame.KEYDOWN:
         #     if event.key == 275:
-        #         bgx -= 1  
-        #         bgx2 -= 1
+        #         bgx -= 10  
+        #         bgx2 -= 10
         #     if event.key == 276:
-        #         bgx += 1  
-        #         bgx2 += 1    
+        #         bgx += 10  
+        #         bgx2 += 10    
     
     

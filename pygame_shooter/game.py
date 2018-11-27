@@ -38,7 +38,8 @@ background_image = pygame.image.load('background.png')
 hero_image = pygame.image.load('hero.png')
 goblin_image = pygame.image.load('goblin.png')
 monster_image = pygame.image.load('monster.png')
-arrow_image = pygame.image.load('arrow.png')
+# arrow_image = pygame.image.load('arrow.png')
+tick = 0
 # heroLoc = {
 #     'x' : 0,
 #     'y' : 0
@@ -52,6 +53,9 @@ game_on = True
 game_start = False
 # The loop will run as long as our bool is True
 while game_on: #short hand for game_on == True
+    tick += 1
+    if(tick % 90 == 0 ):
+        bad_guys.add(BadGuy())
     # We are in the game loop from here on out!
     # 5. Listen for events and quit if the user clicks the X
     #============EVENT CHECKER=================================
@@ -114,7 +118,7 @@ while game_on: #short hand for game_on == True
         # Draw the arrow
         for arrow in arrows:
             arrow.update_me()
-            pygame_screen.blit(arrow_image,[arrow.x,arrow.y])
+            pygame_screen.blit(arrow.img,[arrow.x,arrow.y])
         
         arrow_hit = groupcollide(arrows,bad_guys,True,True)
         if arrow_hit:

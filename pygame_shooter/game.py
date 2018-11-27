@@ -82,6 +82,8 @@ while game_on: #short hand for game_on == True
                 # Space Bar ... FIRE!!
                 new_arrow = Arrow(theHero)
                 arrows.add(new_arrow)
+                bg_music = pygame.mixer.Sound('shoot.wav')
+                bg_music.play()
 
         elif event.type == pygame.KEYUP: # The user RELEASED a key
             # print (event.key)

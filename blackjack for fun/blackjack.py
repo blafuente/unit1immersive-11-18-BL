@@ -38,7 +38,6 @@ while play_on:
             game_on = False
             play_on = False
         elif playing_bet >= min_bet:
-            print "Dealing..."
             print """
 .----------------.
 |  _ _   MMMMM   |
@@ -57,6 +56,7 @@ while play_on:
 |  | o o | ( . ) |
 |   WWWWW   " "  |  VK
 `----------------'"""
+            print "Dealing..."
             time.sleep(1)
             player_total += randint(6,10)
             print "You first card is %d" % player_total
@@ -74,9 +74,7 @@ while play_on:
                 print "Bust! You went over 21"
                 chips = chips - playing_bet
                 print "You have %d chips left" % chips
-                raw_input("Hit any key to continue. ")
-                os.system("clear")
-                break
+                
             if player_total < 21:
                 while player_total < 21:
                     choice = raw_input("Do you want to hit or stay? [hit/stay] ")
@@ -88,16 +86,12 @@ while play_on:
                         if player_total == 21:
                             print "You win!"
                             chips += playing_bet * 2
-                            raw_input("Hit any key to continue. ")
-                            os.system("clear")
-                            break
+                            break   
                         elif player_total > 21:
                             print "Bust! You went over 21"
                             chips = chips - playing_bet
                             print "You have %d chips left" % chips
-                            raw_input("Hit any key to continue. ")
-                            os.system("clear")
-                            break
+                            break   
                     elif choice == "stay":
                         print "You are staying at %d" % player_total
                         break; 
@@ -114,8 +108,7 @@ while play_on:
                         print "Dealer bust, you win"
                         chips += playing_bet * 2
                         print "You won %d chips" % (playing_bet*2)
-                        raw_input("Hit any key to continue. ")
-                        os.system("clear")
+                        break
                     if dealer_total >13 and dealer_total < 16:
                         print "Dealing is hitting.."
                         time.sleep(1)
@@ -124,40 +117,37 @@ while play_on:
                     if dealer_total == player_total:
                         # print "Dealer dealt %d" % dealer_total
                         print "Tie. No chips won."
-                        raw_input("Hit any key to continue. ")
-                        os.system("clear")
                         break
                     if dealer_total > player_total and dealer_total <= 21:
                         # print "Dealer dealt %d" % dealer_total
                         print "Dealer wins"
                         chips = chips - playing_bet
                         print "You lost %d chips" % playing_bet
-                        raw_input("Hit any key to continue. ")
-                        os.system("clear")
-                        break
+                        break                       
                     if dealer_total < player_total and dealer_total < 21:
                         # print "Dealer dealt %d" % dealer_total
                         print "You win!"
                         chips += playing_bet * 2
                         print "You won %d chips" % (playing_bet*2)
-                        raw_input("Hit any key to continue. ")
-                        os.system("clear")
                         break
+                        
                     elif dealer_total < player_total and player_total > 21:
                         print "Bust!"
                         chips -= playing_bet
-                        raw_input("Hit any key to continue. ")
-                        os.system("clear")
+                        break
+
+        
+
         if chips == 0 and chips <= 0:                    
             play_again = raw_input("Do you want to play again? [yes/no] ")
             if (play_again == "no"):
                 play_on = False
                 game_on = False
-                os.system("clear")
             elif play_again == "yes":
                 play_on = True 
-                os.system("clear")
             else:
                 print "huh?"
-                    
+        
+        raw_input("Hit any key to continue. ")
+        os.system("clear")                    
             

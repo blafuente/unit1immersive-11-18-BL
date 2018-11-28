@@ -47,6 +47,7 @@ tick = 0
 
 bg_music = pygame.mixer.Sound('bg.wav')
 bg_music.play()
+shoot_sound = pygame.mixer.Sound('shoot.wav')
 
 #================MAIN GAME LOOP==============================
 game_on = True
@@ -82,8 +83,8 @@ while game_on: #short hand for game_on == True
                 # Space Bar ... FIRE!!
                 new_arrow = Arrow(theHero)
                 arrows.add(new_arrow)
-                bg_music = pygame.mixer.Sound('shoot.wav')
-                bg_music.play()
+                # shoot_sound = pygame.mixer.Sound('shoot.wav')
+                shoot_sound.play()
 
         elif event.type == pygame.KEYUP: # The user RELEASED a key
             # print (event.key)
@@ -131,9 +132,9 @@ while game_on: #short hand for game_on == True
             bad_guy.update_me(theHero)
             pygame_screen.blit(monster_image, [bad_guy.x, bad_guy.y])
 
-        badguy_hit = groupcollide(bad_guys, theHeros, True, True)
-        if badguy_hit:
-            theHero.add(Hero())
+        # badguy_hit = groupcollide(bad_guys, theHeros, True, True)
+        # if badguy_hit:
+        #     theHero.add(Hero())
 
     if game_start == False:
         start_button.setup_message()

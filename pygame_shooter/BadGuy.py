@@ -6,7 +6,7 @@ class BadGuy(Sprite):
     def __init__(self):
         super(BadGuy,self).__init__()
         self.x = randint(250, 501)
-        self.y = randint(250, 451)
+        self.y = 50
         self.speed = randint(1,4)
         self.rect = pygame.Rect(0,0,32,32)
         self.rect.centerx = self.x

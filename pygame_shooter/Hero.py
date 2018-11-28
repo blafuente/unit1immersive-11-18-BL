@@ -8,7 +8,7 @@ class Hero(Sprite):
     def __init__(self):
         super(Hero,self).__init__()
         self.x = 100
-        self.y = 100
+        self.y = 400
         self.speed = 10
         self.should_move_right = False
         self.should_move_left = False

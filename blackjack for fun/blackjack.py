@@ -68,73 +68,73 @@ while play_on:
             print "Your total is now: %d" % player_total
             dealer_total += randint(8,10)
             if player_total == 21:
-                print "You have 21!"
-                chips += playing_bet * 3 
+                print "You have 21! BlackJack"
+                chips += playing_bet * 2
             if player_total > 21:
                 print "Bust! You went over 21"
                 chips = chips - playing_bet
                 print "You have %d chips left" % chips
                 
-            if player_total < 21:
-                while player_total < 21:
-                    choice = raw_input("Do you want to hit or stay? [hit/stay] ")
-                    if choice == "hit":
-                        print "Dealing..."
-                        time.sleep(1)
-                        player_total += randint(1,11)
-                        print "You now have %d" % player_total
-                        if player_total == 21:
-                            print "You win!"
-                            chips += playing_bet * 2
-                            break   
-                        elif player_total > 21:
-                            print "Bust! You went over 21"
-                            chips = chips - playing_bet
-                            print "You have %d chips left" % chips
-                            break   
-                    elif choice == "stay":
-                        print "You are staying at %d" % player_total
-                        break; 
+            # if player_total < 21:
+            while player_total < 21:
+                choice = raw_input("Do you want to hit or stay? [hit/stay] ")
+                if choice == "hit":
+                    print "Dealing..."
+                    time.sleep(1)
+                    player_total += randint(1,11)
+                    print "You now have %d" % player_total
+                    if player_total == 21:
+                        print "You hit 21!"
+                        # chips += playing_bet * 2
+                        break   
+                    elif player_total > 21:
+                        print "Bust! You went over 21"
+                        chips = chips - playing_bet
+                        print "You have %d chips left" % chips
+                        break   
+                elif choice == "stay":
+                    print "You are staying at %d" % player_total
+                    break; 
             
            
-            if dealer_total >= 13 and dealer_total < 21 and player_total < 21:
-                while dealer_total <= 21:
+            # if dealer_total >= 13 and dealer_total < 21 and player_total < 21:
+            while dealer_total >= 13 and dealer_total < 21 and player_total <= 21:
+                print "Dealer has %d" % dealer_total
+                # dealer_total += randint(1,5)
+                # print "Dealing is hitting.."
+                # time.sleep(1)
+                if dealer_total > 21 and player_total < 21:
                     print "Dealer has %d" % dealer_total
-                    # dealer_total += randint(1,5)
-                    # print "Dealing is hitting.."
-                    # time.sleep(1)
-                    if dealer_total > 21 and player_total < 21:
-                        print "Dealer has %d" % dealer_total
-                        print "Dealer bust, you win"
-                        chips += playing_bet * 2
-                        print "You won %d chips" % (playing_bet*2)
-                        break
-                    if dealer_total >13 and dealer_total < 16:
-                        print "Dealing is hitting.."
-                        time.sleep(1)
-                        dealer_total += randint(1,5)
-                        print "Dealer now has %d" % dealer_total
-                    if dealer_total == player_total:
-                        # print "Dealer dealt %d" % dealer_total
-                        print "Tie. No chips won."
-                        break
-                    if dealer_total > player_total and dealer_total <= 21:
-                        # print "Dealer dealt %d" % dealer_total
-                        print "Dealer wins"
-                        chips = chips - playing_bet
-                        print "You lost %d chips" % playing_bet
-                        break                       
-                    if dealer_total < player_total and dealer_total < 21:
-                        # print "Dealer dealt %d" % dealer_total
-                        print "You win!"
-                        chips += playing_bet * 2
-                        print "You won %d chips" % (playing_bet*2)
-                        break
-                        
-                    elif dealer_total < player_total and player_total > 21:
-                        print "Bust!"
-                        chips -= playing_bet
-                        break
+                    print "Dealer bust, you win"
+                    chips += playing_bet 
+                    print "You won %d chips" % (playing_bet)
+                    break
+                if dealer_total >13 and dealer_total < 16:
+                    print "Dealing is hitting.."
+                    time.sleep(1)
+                    dealer_total += randint(1,5)
+                    print "Dealer now has %d" % dealer_total
+                if dealer_total == player_total:
+                    # print "Dealer dealt %d" % dealer_total
+                    print "Tie. No chips won."
+                    break
+                if dealer_total > player_total and dealer_total <= 21:
+                    # print "Dealer dealt %d" % dealer_total
+                    print "Dealer wins"
+                    chips = chips - playing_bet
+                    print "You lost %d chips" % playing_bet
+                    break                       
+                if dealer_total < player_total and dealer_total < 21:
+                    # print "Dealer dealt %d" % dealer_total
+                    print "You win!"
+                    chips += playing_bet
+                    print "You won %d chips" % (playing_bet)
+                    break
+                    
+                elif dealer_total < player_total and player_total > 21:
+                    print "Bust!"
+                    chips -= playing_bet
+                    break
 
         
 
